@@ -4,10 +4,10 @@
 С псевдоочередью для разгрузки бесплатного хостинга
 """
 
-from fastapi import FastAPI, HTTPException, BackgroundTasks
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 from typing import Optional, Dict, List
 import asyncio
 import uuid
@@ -16,13 +16,8 @@ import shutil
 from datetime import datetime, timedelta
 import yt_dlp
 from pathlib import Path
-import re
 
-app = FastAPI(
-    title="Video Downloader API",
-    description="Асинхронный API для загрузки видео с YouTube, VK, Instagram",
-    version="1.0.0"
-)
+app = FastAPI()
 
 # CORS middleware для работы с фронтендом
 app.add_middleware(
